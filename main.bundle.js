@@ -16,7 +16,7 @@ webpackEmptyContext.id = "../../../../../src async recursive";
 /***/ "../../../../../src/app/Components/Plant/PlantComponent.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n <div class=\"panel-inline-group  \">\r\n    \r\n\r\n<div class=\"col-md-12  panel panel-primary \" style='padding:12px;'>\r\n        \r\n <!-- display station list -->\r\n     <stations  ></stations>         \r\n</div>\r\n<div class=\"row\">  \r\n<div class='chart-panel col-md-12 ' style='padding-right:0 !important' >\r\n\r\n         <!-- Overall Motor Status -->\r\n       <div class=\"  panel panel-primary  status-position \" >              \r\n            <motor-status-chart ></motor-status-chart>              \r\n       </div> \r\n\r\n         <!-- Overall Station Status -->\r\n       <div class=\" panel panel-primary status-position\" >   \r\n             <pi-chart></pi-chart>           \r\n       </div>\r\n\r\n         <!-- Plant Notifications -->\r\n       <div class=\" panel panel-primary  plant-alert status-position\"  >   \r\n             <notifications></notifications>\r\n       </div>\r\n       \r\n   \r\n    <div class=\"col-md-11  panel panel-primary    \"  style='width:98% !important'  >            \r\n             <span class=\"col-md-3 box-content right   \"><small><strong>Risk Index(RI)</strong> scale :1-5</small> </span>  \r\n              \r\n             <div class=\"col-md-2\">\r\n             <span class=\"circle-small Green  \"></span>  \r\n             <span >Normal</span>  \r\n             </div>\r\n\r\n             <div class=\"col-md-2\">\r\n             <span class=\"circle-small Red \"></span>  \r\n             <span>Critical</span>\r\n             </div>\r\n\r\n             <div class=\"col-md-2\">\r\n             <span class=\"circle-small Amber \"></span>  \r\n             <span>Warning</span>\r\n         </div>\r\n    </div>\r\n\r\n\r\n</div>\r\n</div>     \r\n   \r\n\r\n\r\n"
+module.exports = "\r\n <div class=\"panel-inline-group  \">\r\n       \r\n\r\n   <div class=\"col-md-12  panel panel-primary \" style='padding:12px;'>\r\n           \r\n    <!-- display station list -->\r\n        <stations  ></stations>         \r\n   </div>\r\n   <div class=\"row\">  \r\n <div class='chart-panel col-md-12 ' style='padding-right:0 !important' >\r\n\r\n            <!-- Overall Motor Status -->\r\n          <div class=\"  panel panel-primary  status-position \" >              \r\n               <motor-status-chart ></motor-status-chart>              \r\n          </div> \r\n\r\n            <!-- Overall Station Status -->\r\n          <div class=\" panel panel-primary status-position\" >   \r\n                <pi-chart></pi-chart>           \r\n          </div>\r\n\r\n            <!-- Plant Notifications -->\r\n          <div class=\" panel panel-primary  plant-alert status-position\"  >   \r\n                <notifications></notifications>\r\n          </div>\r\n          \r\n      \r\n       <div class=\"col-md-11  panel panel-primary    \"  style='width:98% !important'  >            \r\n                <span class=\"col-md-3 box-content right   \"><small><strong>Risk Index(RI)</strong> scale :1-5</small> </span>  \r\n                 \r\n                <div class=\"col-md-2\">\r\n                <span class=\"circle-small Green  \"></span>  \r\n                <span >Normal</span>  \r\n                </div>\r\n\r\n                <div class=\"col-md-2\">\r\n                <span class=\"circle-small Red \"></span>  \r\n                <span>Critical</span>\r\n                </div>\r\n\r\n                <div class=\"col-md-2\">\r\n                <span class=\"circle-small Amber \"></span>  \r\n                <span>Warning</span>\r\n            </div>\r\n       </div>\r\n\r\n\r\n </div>\r\n   </div>     \r\n      \r\n\r\n\r\n "
 
 /***/ }),
 
@@ -416,10 +416,72 @@ var DonutBaseChartComponent_1;
 
 /***/ }),
 
+/***/ "../../../../../src/app/Components/login/login.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-md-6 col-md-offset-3\">\n  <h2>Plant Monitoring System</h2>\n  <form name=\"form\" (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n      <div class=\"form-group\" [ngClass]=\"{ 'has-error': f.submitted && !username.valid }\">\n          <label for=\"username\">Username</label>\n          <input type=\"text\" class=\"form-control\" name=\"username\" [(ngModel)]=\"model.username\" #username=\"ngModel\" required />\n          <div *ngIf=\"f.submitted && !username.valid\" class=\"help-block\">Username is required</div>\n      </div>\n      <div class=\"form-group\" [ngClass]=\"{ 'has-error': f.submitted && !password.valid }\">\n          <label for=\"password\">Password</label>\n          <input type=\"password\" class=\"form-control\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\" required />\n          <div *ngIf=\"f.submitted && !password.valid\" class=\"help-block\">Password is required</div>\n      </div>\n      <div class=\"form-group\">\n          <button [disabled]=\"loading\" class=\"btn btn-primary\">Login</button>\n          <img *ngIf=\"loading\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n      </div>\n  </form>\n</div>     \n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/Components/login/login.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Services_authentication_service__ = __webpack_require__("../../../../../src/app/Services/authentication.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var LoginComponent = (function () {
+    function LoginComponent(route, router, authenticationService) {
+        this.route = route;
+        this.router = router;
+        this.authenticationService = authenticationService;
+        this.model = {};
+        this.loading = false;
+    }
+    LoginComponent.prototype.ngOnInit = function () {
+        // reset login status
+        this.authenticationService.logout();
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    };
+    LoginComponent.prototype.login = function () {
+        this.loading = true;
+        //return this.authenticationService.login(this.username,this.password)
+        //this.router= Router;
+        this.router.navigateByUrl('/plant');
+    };
+    return LoginComponent;
+}());
+LoginComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        template: __webpack_require__("../../../../../src/app/Components/login/login.component.html"),
+        providers: [__WEBPACK_IMPORTED_MODULE_2__Services_authentication_service__["a" /* AuthenticationService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__Services_authentication_service__["a" /* AuthenticationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__Services_authentication_service__["a" /* AuthenticationService */]) === "function" && _c || Object])
+], LoginComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=login.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/Components/motor-alert/motor-alert.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div *ngIf=\"Motor\" class=\" plant-notification panel panel-default plant-alert\" style=\"text-align: left\">\n<div class=\"panel-heading\" ><b>{{JSON.parse(this.Motor.MotorObject).Name}} Real Time Alert</b>\n  </div>\n<div class=\"panel-body\">\n\n\n            <ul>\n                        <li class=\"{{notification.status}}-alert\"  *ngFor=\"let notification of notificationlist\" >\n                            <span class=\"glyphicon glyphicon-alert\"></span>  \n                            <a href=\"#\" >{{notification.content}}</a>\n</li>\n                                    </ul>            \n\n\n</div>\n</div>\n\n\n\n"
+module.exports = "\n<div class=\" plant-notification panel panel-default plant-alert\" style=\"text-align: left\">\n<div class=\"panel-heading\" ><b>{{JSON.parse(this.Motor.MotorObject).Name}} Real Time Alert</b>\n  </div>\n<div class=\"panel-body\">\n\n\n            <ul>\n                        <li class=\"{{notification.status}}-alert\"  *ngFor=\"let notification of notificationlist\" >\n                            <span class=\"glyphicon glyphicon-alert\"></span>  \n                            <a href=\"#\" >{{notification.content}}</a>\n</li>\n                                    </ul>            \n\n\n</div>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -496,7 +558,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/Components/motor-list/motor-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div  class=\"row\">\n\t\t<div class=\"col-md-12 \" style=\"text-align: center;\"> <h4>Motor Real Time Monitoring</h4></div>\n\t </div>  \n\t <div class=\"row\">\n\t \n\t\t \n\t   <div class=\"col-md-3 motor-left-nav \" >\t\t\t\n\t\t   <div class=\"panel panel-default\" >\n\t\t\t\t <div class=\"panel-heading\" style=\"color:#2e3f4d\" >\n\t\t\t\t <div class=\"row\">\n\t\t\t\t <div class=\"col-md-6\">\n\t\t\t\t\t <select id=\"stationName\"   name=\"StationName\" (change)=\"onStationChange($event)\">\n\t\t\t\t\t <option >Select a Station</option>\n\t\t\t\t\t <option *ngFor=\"let station of stationList\"  [selected]=\"JSON.parse(station.StationObject).StationName === currentStation\"   >{{JSON.parse(station.StationObject).StationName}}</option>\n\t\t\t\t </select>\n\t\t\t\t </div>\n\t\t\t\t\t <div class=\"col-md-6\" style=\"text-align:right\">\n\t\t\t\t\t\t Severity\n\t\t\t\t\t <span class=\"glyphicon glyphicon-sort-by-attributes-alt\" ></span>\n\t\t\t\t\t <span class=\"glyphicon glyphicon-filter\"></span>\n\t\t\t\t\t </div>\t\t\t\t\n\t\t\t\t </div>\t\t\t\t\n\t \n\t\t\t\t\t \n\t\t\t\t </div>\n\t\t\t\t <div class=\"panel-body\">\n\t\t\t\n\t\t<div class=\"row\"  *ngIf=\"currentStation\"  > \n\t\t \n\t\t\t\t\t\t<div class=\"row\"><div class=\"col-md-12\"><hr style='margin-top:0' class=\"style14\"/></div>\n\t\t\t\t\t\t</div>\n\t\t</div>\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t \n\t\t<div class=\"row currentStation SelectedNav\" id=\"myid\"  *ngIf=\"currentStation\" \n\t\t(click)=\"displayDashboardData(currentStation,$event)\"  > \n\t\t\n\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\tDashboard ({{currentStation}})\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t<div class=\"row\"><div class=\"col-md-12\"><hr class=\"style14\"/></div>\n\t\t\t\t\t\t</div>\n\t\t</div>\n\t\t\n\t <div class=\"row motorlist \" id=\"{{motor.RowKey}}\" *ngFor=\"let motor of motorFilteredList\"\n\t (click)=\"displayMotorData(JSON.parse(motor.MotorObject).Name,motor.RowKey,$event)\"  >\n\t                \n\t\t\t\t\t <div class=\"col-md-4\">\n\t\t\t\t\t\t <img class=\"img-circle img-responsive\" [src]=\"JSON.parse(motor.MotorObject).Image\"  >\n\t\t\t\t\t </div>\n\t\t\t\t\t <div class=\"col-md-6 zero-p-left zero-p-right\" >\n\t\t\t\t\t   <span>\t<strong> {{JSON.parse(motor.MotorObject).Name}} </strong></span>\n\t\t\t\t\t\t \n\t\t\t\t\t\t<!-- <button type=\"button\" class=\"btn btn-link\" (click)=\"displayMotorData($event)\" name=\"{{JSON.parse(motor.MotorObject).Name}}\" style=\"font-weight: bold; color:#663300 \">{{JSON.parse(motor.MotorObject).Name}}</button>\n\t\t\t\t\t\t-->\n\t\t\t\t\t\t \n\t\t\t\t\t </div>\n\t\t\t\t\t <div class=\"col-md-2 zero-p-left\">\t\t\t\t\t\n\t\t\t\t\t\t <svg height=\"40\" width=\"40\">   <circle cx=\"10\" cy=\"10\" r=\"8\" stroke=\"black\" stroke-width=\"1\" fill=\"rgb(0,153,76)\" />\n\t\t\t\t\t\t </svg>\t\t\n\t\t\t\t\t</div>\n\t \n\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t<div class=\"col-md-12\" style=\"text-align: center\">\n\t\t\t\t\t\tSerial Number #{{JSON.parse(motor.MotorObject).SerialNumber}}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-md-12\" style=\"text-align: center\">\n\t\t\t\t\t\t\t<img  [src]=\"locationImage\" width=\"15px\" height=\"20px\">&nbsp;{{JSON.parse(motor.MotorObject).Location}}\n\t\t\t\t\t\t</div>\n\t\t\t    \t</div>\n\n\t\t\t\t\t<div class=\"row\"><div class=\"col-md-12\"><hr class=\"style14\"/></div>\n\t\t\t\t\t</div>\n\t </div>\n\t </div>\n\t\t\t\t </div>\n\t\t\t\t </div>\n\t \n\t \n     \n\t <div class=\"col-md-9 text-center\" [hidden]=\"flag\">\n\t\t\t<span> Station Dashboard Under construction </span>\n\t   </div>\n\n\n\t <div class=\"col-md-9 text-center\" [hidden]=\"default\">\n\t\t  <div class=\"row\">\n\t\t\t  <div class=\"col-md-8\">\n\t\t\t\t  <app-motor-summary></app-motor-summary>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-4\">\n\t\t\t\t  <app-motor-alert></app-motor-alert>\n\t\t\t  </div>\n\t\t  </div>\n \n\t\t  \n\t\t <gauge-chart></gauge-chart>\n\t \n\t\t <linechart></linechart>\n\t </div>\n\t \n\t\t\t "
+module.exports = "<div  class=\"row\">\n\t\t<div class=\"col-md-12 \" style=\"text-align: center;\"> <h4>Motor Real Time Monitoring</h4></div>\n\t </div>  \n\t <div class=\"row\">\n\t \n\t\t \n\t   <div class=\"col-md-3 motor-left-nav \" [hidden]=\"!default\" >\t\t\t\n\t\t   <div class=\"panel panel-default\" >\n\t\t\t\t <div class=\"panel-heading\" style=\"color:#2e3f4d\" >\n\t\t\t\t <div class=\"row\">\n\t\t\t\t <div class=\"col-md-6\">\n\t\t\t\t\t <select id=\"stationName\"   name=\"StationName\" (change)=\"onStationChange($event)\">\n\t\t\t\t\t <option >Select a Station</option>\n\t\t\t\t\t <option *ngFor=\"let station of stationList\"  [selected]=\"JSON.parse(station.StationObject).StationName === currentStation\"   >{{JSON.parse(station.StationObject).StationName}}</option>\n\t\t\t\t </select>\n\t\t\t\t </div>\n\t\t\t\t\t <div class=\"col-md-6\" style=\"text-align:right\">\n\t\t\t\t\t\t Severity\n\t\t\t\t\t <span class=\"glyphicon glyphicon-sort-by-attributes-alt\" ></span>\n\t\t\t\t\t <span class=\"glyphicon glyphicon-filter\"></span>\n\t\t\t\t\t </div>\t\t\t\t\n\t\t\t\t </div>\t\t\t\t\n\t \n\t\t\t\t\t \n\t\t\t\t </div>\n\t\t\t\t <div class=\"panel-body\">\n\t\t\t\n\t\t<div class=\"row\"  *ngIf=\"currentStation\"  > \n\t\t \n\t\t\t\t\t\t<div class=\"row\"><div class=\"col-md-12\"><hr style='margin-top:0' class=\"style14\"/></div>\n\t\t\t\t\t\t</div>\n\t\t</div>\t\t\t\n\t\t\t\t\t\n\t\t\t\t<!--\t\t\n\t \n\t\t<div class=\"row currentStation SelectedNav\" id=\"myid\"  *ngIf=\"currentStation\" \n\t\t(click)=\"displayDashboardData(currentStation,$event)\"  > \n\t\t\n\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\tDashboard ({{currentStation}})\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t<div class=\"row\"><div class=\"col-md-12\"><hr class=\"style14\"/></div>\n\t\t\t\t\t\t</div>\n\t\t</div>\n\t-->\n\t\t\n\t <div class=\"row motorlist \" id=\"{{motor.RowKey}}\" *ngFor=\"let motor of motorFilteredList\"\n\t (click)=\"displayMotorData(JSON.parse(motor.MotorObject).Name,motor.RowKey,$event)\"  >\n\t                \n\t\t\t\t\t <div class=\"col-md-4\">\n\t\t\t\t\t\t <img class=\"img-circle img-responsive\" [src]=\"JSON.parse(motor.MotorObject).Image\"  >\n\t\t\t\t\t </div>\n\t\t\t\t\t <div class=\"col-md-6 zero-p-left zero-p-right\" >\n\t\t\t\t\t   <span>\t<strong> {{JSON.parse(motor.MotorObject).Name}} </strong></span>\n\t\t\t\t\t\t \n\t\t\t\t\t\t<!-- <button type=\"button\" class=\"btn btn-link\" (click)=\"displayMotorData($event)\" name=\"{{JSON.parse(motor.MotorObject).Name}}\" style=\"font-weight: bold; color:#663300 \">{{JSON.parse(motor.MotorObject).Name}}</button>\n\t\t\t\t\t\t-->\n\t\t\t\t\t\t \n\t\t\t\t\t </div>\n\t\t\t\t\t <div class=\"col-md-2 zero-p-left\">\t\t\t\t\t\n\t\t\t\t\t\t <svg height=\"40\" width=\"40\">   <circle cx=\"10\" cy=\"10\" r=\"8\" stroke=\"black\" stroke-width=\"1\" fill=\"rgb(0,153,76)\" />\n\t\t\t\t\t\t </svg>\t\t\n\t\t\t\t\t</div>\n\t \n\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t<div class=\"col-md-12\" style=\"text-align: center\">\n\t\t\t\t\t\tSerial Number #{{JSON.parse(motor.MotorObject).SerialNumber}}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-md-12\" style=\"text-align: center\">\n\t\t\t\t\t\t\t<img  [src]=\"locationImage\" width=\"15px\" height=\"20px\">&nbsp;{{JSON.parse(motor.MotorObject).Location}}\n\t\t\t\t\t\t</div>\n\t\t\t    \t</div>\n\n\t\t\t\t\t<div class=\"row\"><div class=\"col-md-12\"><hr class=\"style14\"/></div>\n\t\t\t\t\t</div>\n\t </div>\n\t </div>\n\t\t\t\t </div>\n\t\t\t\t </div>\n\t \n\t \n     <!--\n\t <div class=\"col-md-9 text-center\" [hidden]=\"flag\">\n\t\t\t<span> Station Dashboard Under construction </span>\n\t   </div>\n\t-->\n\n\t <div class=\"col-md-9 text-center\" [hidden]=\"default\">\n\t\t  <div class=\"row\">\n\t\t\t  <div class=\"col-md-8\">\n\t\t\t\t  <app-motor-summary></app-motor-summary>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-4\">\n\t\t\t\t  <app-motor-alert></app-motor-alert>\n\t\t\t  </div>\n\t\t  </div>\n \n\t\t  \n\t\t <gauge-chart></gauge-chart>\n\t \n\t\t <linechart></linechart>\n\t </div>\n\t \n"
 
 /***/ }),
 
@@ -576,8 +638,8 @@ var MotorListComponent = (function () {
         this.flag = true;
         //this.motorService.setMotor(this.applyMotorFilter((event.target as HTMLButtonElement).name));
         this.motorService.setMotor(this.applyMotorFilter(motorname));
-        var myid = document.getElementById('myid');
-        this.renderer.setElementClass(myid, "SelectedNav", false);
+        /*let  myid = document.getElementById('myid');
+         this.renderer.setElementClass(myid,"SelectedNav",false); */
         console.log('hi');
         if (this.motorFilteredList) {
             for (var motor in this.motorFilteredList) {
@@ -593,8 +655,9 @@ var MotorListComponent = (function () {
     MotorListComponent.prototype.displayDashboardData = function (Stationname, event) {
         this.flag = false;
         this.default = true;
-        var myid = document.getElementById('myid');
-        this.renderer.setElementClass(myid, "SelectedNav", true);
+        /*  let  myid = document.getElementById('myid');
+         this.renderer.setElementClass(myid,"SelectedNav",true);
+         */
         console.log('hi');
         if (this.motorFilteredList) {
             for (var motor in this.motorFilteredList) {
@@ -1539,12 +1602,7 @@ var NotificationService = NotificationService_1 = (function () {
     };
     NotificationService.prototype.GetJsonData = function (xmldata, plantName, stationName) {
         var jsonobject = xmldata.json()['value'];
-        var filterObject = [];
-        for (var item in jsonobject) {
-            if (parseInt(item) < 10)
-                filterObject.push(jsonobject[item]);
-        }
-        return filterObject;
+        return jsonobject;
     };
     /*
      private handleError(error: any): Promise<any> {
@@ -1789,6 +1847,63 @@ var StationService_1, _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/Services/authentication.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthenticationService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AuthenticationService = (function () {
+    function AuthenticationService(http) {
+        this.http = http;
+    }
+    AuthenticationService.prototype.login = function (username, password) {
+        /*return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
+            .map((response: Response) => {
+                // login successful if there's a jwt token in the response
+                let user = response.json();
+                if (user && user.token) {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                }
+            });
+            */
+        if (username == password)
+            return true;
+        else
+            return false;
+    };
+    AuthenticationService.prototype.logout = function () {
+        // remove user from local storage to log user out
+        localStorage.removeItem('currentUser');
+    };
+    return AuthenticationService;
+}());
+AuthenticationService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], AuthenticationService);
+
+var _a;
+//# sourceMappingURL=authentication.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/Services/graph.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1856,7 +1971,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n \n\n \n \n <div class=\"container\"> \n  \n     <div id='app-header' class=\"panel panel-primary \">\n         \n               <app-navbar></app-navbar>\n      \n        \n        <div class=\"panel-body body-container\"  >     \n            \n            \n            <router-outlet></router-outlet>\n        </div>\n\n        <div id='footer' class=\"panel-footer page-footer\">\n            <div >      </div>    \n\n       </div>   \n    \n    </div>\n  \n   \n</div>\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n \n\n \n \n <div class=\"container\"> \n  \n     <div id='app-header' class=\"panel panel-primary \">\n         \n        <app-navbar></app-navbar>            \n        \n        <div class=\"panel-body body-container\"  >     \n            \n            \n            <router-outlet></router-outlet>\n        </div>\n\n        <div id='footer' class=\"panel-footer page-footer\">\n            <div >      </div>    \n        \n        </div>  \n    </div>\n  \n   \n</div>\n\n\n"
 
 /***/ }),
 
@@ -1939,7 +2054,8 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__Components_donut_base_chart_donut_base_chart_component__ = __webpack_require__("../../../../../src/app/Components/donut-base-chart/donut-base-chart.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__Components_custom_pipe_custom_pipe_component__ = __webpack_require__("../../../../../src/app/Components/custom-pipe/custom-pipe.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__Services_StationFilter__ = __webpack_require__("../../../../../src/app/Services/StationFilter.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__app_routing_module__ = __webpack_require__("../../../../../src/app/app.routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__Components_login_login_component__ = __webpack_require__("../../../../../src/app/Components/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__app_routing_module__ = __webpack_require__("../../../../../src/app/app.routing.module.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1988,7 +2104,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
- // this is routing module
+
+
 /*const appRoutes:Routes=[
   {  path:'graph',  component:GaugeChartComponent  },
   {  path:'motor/:StationName',  component:MotorListComponent   },
@@ -2033,7 +2150,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_36__charts_gauge_chart_base_gauge_chart_base_component__["a" /* GaugeChartBaseComponent */],
             __WEBPACK_IMPORTED_MODULE_37__Components_donut_base_chart_donut_base_chart_component__["a" /* DonutBaseChartComponent */],
             __WEBPACK_IMPORTED_MODULE_38__Components_custom_pipe_custom_pipe_component__["a" /* CustomPipeComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__Services_StationFilter__["a" /* SearchFilterPipe */]
+            __WEBPACK_IMPORTED_MODULE_39__Services_StationFilter__["a" /* SearchFilterPipe */],
+            __WEBPACK_IMPORTED_MODULE_40__Components_login_login_component__["a" /* LoginComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -2042,7 +2160,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* ReactiveFormsModule */],
             //RouterModule.forRoot(appRoutes),
-            __WEBPACK_IMPORTED_MODULE_40__app_routing_module__["a" /* AppRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_41__app_routing_module__["a" /* AppRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_6_ng2_toasty__["a" /* ToastyModule */].forRoot()
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_18__Services_PlantService__["a" /* PlantService */], __WEBPACK_IMPORTED_MODULE_19__Services_StationService__["a" /* StationService */], __WEBPACK_IMPORTED_MODULE_21__Services_NotificationService__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_20__Services_MotorService__["a" /* MotorService */], __WEBPACK_IMPORTED_MODULE_26__Configuration_MasterConfiguration__["a" /* config */], { provide: __WEBPACK_IMPORTED_MODULE_5__angular_common__["a" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_5__angular_common__["b" /* HashLocationStrategy */] }],
@@ -2065,6 +2183,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__motor_management_motor_management_component__ = __webpack_require__("../../../../../src/app/motor-management/motor-management.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Components_Plant_hclplantdashboard__ = __webpack_require__("../../../../../src/app/Components/Plant/hclplantdashboard.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Components_Station_StationComponent__ = __webpack_require__("../../../../../src/app/Components/Station/StationComponent.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Components_login_login_component__ = __webpack_require__("../../../../../src/app/Components/login/login.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2079,14 +2198,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var appRoutes = [
     { path: 'graph', component: __WEBPACK_IMPORTED_MODULE_2__charts_gauge_chart_gauge_chart_component__["a" /* GaugeChartComponent */] },
     { path: 'motor/:StationName', component: __WEBPACK_IMPORTED_MODULE_3__Components_motor_list_motor_list_component__["a" /* MotorListComponent */] },
     { path: 'motor', component: __WEBPACK_IMPORTED_MODULE_3__Components_motor_list_motor_list_component__["a" /* MotorListComponent */] },
     { path: 'MotorManagement', component: __WEBPACK_IMPORTED_MODULE_4__motor_management_motor_management_component__["a" /* MotorManagementComponent */] },
     { path: 'plant', component: __WEBPACK_IMPORTED_MODULE_5__Components_Plant_hclplantdashboard__["a" /* hclplantdashboard */], data: {} },
-    { path: '', redirectTo: '/plant', pathMatch: 'full' },
-    { path: 'station/:id', component: __WEBPACK_IMPORTED_MODULE_6__Components_Station_StationComponent__["a" /* StationComponent */] }
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'station/:id', component: __WEBPACK_IMPORTED_MODULE_6__Components_Station_StationComponent__["a" /* StationComponent */] },
+    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_7__Components_login_login_component__["a" /* LoginComponent */] }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -2212,6 +2333,11 @@ var GaugeChartComponent = (function (_super) {
         var _this = _super.call(this) || this;
         _this.motorService = motorService;
         _this.url = 'wss://hclmotorwebapplication.azurewebsites.net';
+        _this.options = {
+            redFrom: 90, redTo: 100,
+            yellowFrom: 75, yellowTo: 90,
+            minorTicks: 5
+        };
         _this.dataArray = [
             ['Label', 'Voltage'],
             ['Voltage', 80],
@@ -2241,14 +2367,14 @@ var GaugeChartComponent = (function (_super) {
             console.log('Message received....');
             console.log('receive message' + message.data);
             console.log('Device Name' + JSON.parse(message.data).DeviceName);
-            if (ref.MotorName == JSON.parse(message.data).DeviceName) {
-                var voltage = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Voltage'; })[0].Value;
-                var current = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Current'; })[0].Value;
-                var frequency = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Frequency'; })[0].Value;
-                var power = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Load'; })[0].Value;
-                var velocity = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Velocity'; })[0].Value;
-                ref.getTemp(current, voltage, power, frequency, velocity);
-            }
+            // if(ref.MotorName==JSON.parse(message.data).DeviceName){
+            var voltage = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Voltage'; })[0].Value;
+            var current = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Current'; })[0].Value;
+            var frequency = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Frequency'; })[0].Value;
+            var power = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Load'; })[0].Value;
+            var velocity = JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Velocity'; })[0].Value;
+            ref.getTemp(current, voltage, power, frequency, velocity);
+            //}       
         };
         return _this;
     }
@@ -2269,22 +2395,33 @@ var GaugeChartComponent = (function (_super) {
             ['Velocity', 70]
         ];
         this.data = this.createDataTable(v);
-        var options = {
-            redFrom: 90, redTo: 100,
-            yellowFrom: 75, yellowTo: 90,
-            minorTicks: 5
-        };
         this.chart = this.createGaugeChart(document.getElementById('gauge_chart'));
-        this.chart.draw(this.data, options);
-        var ref1 = this;
+        this.chart.draw(this.data, this.options);
+        var ref2 = this;
+        setInterval(function () {
+            //this.ref=this;
+            ref2.getTemp(40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()));
+        }
+        /*console.log('Temp'+ref1.data);
+        ref1.data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+        ref1.chart.draw(ref1.data, ref1.options);
+      }*/
+        , 1000);
     };
     GaugeChartComponent.prototype.getTemp = function (current, voltage, power, frequency, velocity) {
         console.log('Current-->' + current + 'Voltage-->' + voltage + 'Frequency-->' + frequency);
         var timestamp = this.GetTime(new Date());
-        this.dataArray.push(['Current', current], ['Voltage', voltage], ['Power', power], ['Frequency', frequency], ['Velocity', velocity]);
-        this.data = this.createDataTable(this.dataArray);
-        this.chart = this.createGaugeChart(document.getElementById('gauge_chart'));
+        console.log('Websocket data' + this.data);
+        this.data.setValue(0, 1, voltage);
+        this.data.setValue(1, 1, current);
+        this.data.setValue(2, 1, frequency);
+        this.data.setValue(3, 1, power);
+        this.data.setValue(4, 1, velocity);
         this.chart.draw(this.data, this.options);
+        //this.dataArray.push( ['Current', current],['Voltage',voltage],['Power',power],['Frequency',frequency],['Velocity',velocity]);
+        //this.data= this.createDataTable(this.dataArray)
+        //this.chart = this.createGaugeChart(document.getElementById('gauge_chart'));
+        //this.chart.draw(this.data, this.options);   
     };
     GaugeChartComponent.prototype.GetTime = function (date) {
         var day = date.getDate();
@@ -2421,11 +2558,29 @@ var EvolutionComponent = (function (_super) {
             ['Time', 'Velocity', 'Load'],
             [_this.currentTime, 0, 21]
         ];
+        var ref = _this;
+        setInterval(function () {
+            //this.ref=this;
+            ref.getTemp(40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()));
+        }
+        /*console.log('Temp'+ref1.data);
+        ref1.data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+        ref1.chart.draw(ref1.data, ref1.options);
+      }*/
+        , 1000);
+        setInterval(function () {
+            //this.ref=this;
+            ref.onClick('Amber', 'Motor Voltage is in warning state');
+        }
+        /*console.log('Temp'+ref1.data);
+        ref1.data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+        ref1.chart.draw(ref1.data, ref1.options);
+      }*/
+        , 10000);
         console.log("Log for Wss: " + _this.url);
         //   this.socket = io(this.url);
         //   console.log("connected...");
         var ws = new WebSocket(_this.url);
-        var ref = _this;
         ws.onopen = function () {
             console.log('Successfully connect WebSocket' + this.url);
         };
@@ -2436,30 +2591,21 @@ var EvolutionComponent = (function (_super) {
             console.log('Message received....');
             console.log('receive message' + message.data);
             console.log('Device Name' + JSON.parse(message.data).DeviceName);
-            if (ref.MotorName == JSON.parse(message.data).DeviceName) {
-                ref.getTemp(JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Velocity'; })[0].Value, JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Load'; })[0].Value);
-                //Showing the alert for motor
-                console.log(JSON.parse(message.data).MotorStatus);
-                if (JSON.parse(message.data).MotorStatus == "Red") {
-                    ref.onClick('Red', 'Motor Velocity is in critical state');
-                }
-                if (JSON.parse(message.data).MotorStatus == "Amber") {
-                    ref.onClick('Red', 'Motor Voltage is in warning state');
-                }
+            //if(ref.MotorName==JSON.parse(message.data).DeviceName){
+            ref.getTemp(JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Velocity'; })[0].Value, JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Load'; })[0].Value);
+            //Showing the alert for motor
+            console.log(JSON.parse(message.data).MotorStatus);
+            if (JSON.parse(message.data).MotorStatus == "Red") {
+                ref.onClick('Red', 'Motor Velocity is in critical state');
             }
+            if (JSON.parse(message.data).MotorStatus == "Amber") {
+                ref.onClick('Amber', 'Motor Voltage is in warning state');
+            }
+            //}
         };
         return _this;
     }
-    EvolutionComponent.prototype.notify = function () {
-        this.onClick('Red', 'Motor Velocity is in critical state');
-        this.onClick('Amber', 'Motor Voltage is in warning state');
-        var item = {};
-        item['status'] = 'Red';
-        item['content'] = 'Motor Velocity is in critical state';
-        this.motorService.setNotification(item);
-        item['status'] = 'Amber';
-        item['content'] = 'Motor Voltage is in warning state';
-        this.motorService.setNotification(item);
+    EvolutionComponent.prototype.notify = function (item) {
     };
     EvolutionComponent.prototype.drawGraph = function () {
         console.log("DrawGraph Evolution...");
@@ -2482,8 +2628,6 @@ var EvolutionComponent = (function (_super) {
         };
         this.chart = this.createBarChart(document.getElementById('monitor_chart'));
         this.chart.draw(this.data, this.options);
-        //getTemp();
-        //setInterval(getTemp, 1000);
         var ref1 = this;
     };
     EvolutionComponent.prototype.getTemp = function (temperature, humidity) {
@@ -2509,7 +2653,7 @@ var EvolutionComponent = (function (_super) {
         var msg = 'Critical Alert - ' + content;
         if (arg == 'Amber')
             msg = 'Warning Alert - ' + content;
-        this.drawGraph();
+        //this.drawGraph();
         // Or create the instance of ToastOptions
         var toastOptions = {
             title: "Motor Alert",
@@ -2528,6 +2672,10 @@ var EvolutionComponent = (function (_super) {
             this.toastyService.error(toastOptions);
         else
             this.toastyService.warning(toastOptions);
+        var item = {};
+        item['status'] = arg;
+        item['content'] = content;
+        this.motorService.setNotification(item);
     };
     return EvolutionComponent;
 }(__WEBPACK_IMPORTED_MODULE_1__google_chart_google_chart_component__["a" /* GoogleChartComponent */]));
@@ -2548,7 +2696,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/evolution/lineChart.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel panel-default\">\n    <div class=\"panel-heading\" style=\"text-align: left; font-weight:bold\">\n        {{MotorName}} - Velocity vs Load <ng2-toasty></ng2-toasty> \n\n\n        <button (click)=\"notify()\" name=\"GenerateNotification\">Generate Notification</button>\n    </div>\n    <div style=\"width:400 px; height: 500px\" class=\"panel-body\" id=\"monitor_chart\"></div>\n</div>\n"
+module.exports = "<div class=\"panel panel-default\">\n    <div class=\"panel-heading\" style=\"text-align: left; font-weight:bold\">\n        {{MotorName}} - Velocity vs Load <ng2-toasty></ng2-toasty> \n\n\n        <!--<button (click)=\"notify()\" name=\"GenerateNotification\">Generate Notification</button>-->\n    </div>\n    <div style=\"width:400 px; height: 500px\" class=\"panel-body\" id=\"monitor_chart\"></div>\n</div>\n"
 
 /***/ }),
 
@@ -2573,7 +2721,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/forms/add-motor-form/add-motor-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div [hidden]=\"submitted\">\n  \n  \n  <h1>Motor Form</h1>\n    <form style=\"width:97%; align-items: center\" #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\" style=\"width:80%\">\n\n       <div class=\"form-group\" >\n        \n  <label for=\"station\">Select a Station</label>\n  <select class=\"form-control\"  id=\"stationName\"    name=\"StationName\" [(ngModel)]=\"model.StationName\" required>\n    <option *ngFor=\"let station of StationList\">{{JSON.parse(station.StationObject).StationName}}</option>\n   </select>\n       </div>\n        <div class=\"form-group\" >\n        <label for=\"name\">Motor Name</label>\n        <input type=\"text\" class=\"form-control\" id=\"name\" name=\"Name\" [(ngModel)]=\"model.Name\" required #Name=\"ngModel\" >\n      </div>\n\n      <div [hidden]=\"Name.valid || Name.pristine\" class=\"alert alert-danger\">\n          Motor Name is required\n      </div>\n      <div class=\"form-group\">\n        <label for=\"Motor Serial Number\">Motor Serial Number</label>\n        <input type=\"text\" class=\"form-control\" id=\"SerialNumber\" name=\"SerialNumber\" [(ngModel)]=\"model.SerialNumber\" required #SerialNumber=\"ngModel\">\n      </div>\n\n      <div [hidden]=\"SerialNumber.valid || SerialNumber.pristine\" class=\"alert alert-danger\">\n          Serial Number is required\n      </div>\n\n       <div class=\"form-group\">\n        <label for=\"Motor Location\">Motor Location</label>\n        <input type=\"text\" class=\"form-control\" id=\"location\" [(ngModel)]=\"model.Location\" name=\"Location\">\n      </div>\n       <div class=\"form-group\">\n        <label for=\"Motor Description\">Motor Description</label>\n        <input type=\"text\" class=\"form-control\" id=\"description\" [(ngModel)]=\"model.Description\" name=\"Description\">\n      </div>      \n       \n\n      <div class=\"form-group\">\n        <label for=\"frequency\">Motor Frequency</label>\n        <input type=\"text\" class=\"form-control\" id=\"frequency\" name=\"Frequency\" [(ngModel)]=\"model.Frequency\" required #Frequency=\"ngModel\" >\n      </div>\n\n       <div class=\"form-group\">\n        <label for=\"power\">Motor Power(HP)</label>\n        <input type=\"text\" class=\"form-control\" id=\"power\" name=\"Power\" [(ngModel)]=\"model.Power\" required #Power=\"ngModel\" >\n      </div>\n\n       <div class=\"form-group\">\n        <label for=\"RatedCurrent\">Motor RatedCurrent</label>\n        <input type=\"text\" class=\"form-control\" id=\"RatedCurrent\" name=\"RatedCurrent\" [(ngModel)]=\"model.RatedCurrent\" required #RatedCurrent=\"ngModel\" >\n      </div>\n\n       <div class=\"form-group\">\n        <label for=\"RatedVoltage\">Motor RatedVoltage</label>\n        <input type=\"text\" class=\"form-control\" id=\"RatedVoltage\" name=\"RatedVoltage\" [(ngModel)]=\"model.RatedVoltage\" required #RatedVoltage=\"ngModel\" >\n      </div>\n      <div class=\"form-group\">\n        <label for=\"LeakageCurrentLimit\">Motor LeakageCurrentLimit</label>\n        <input type=\"text\" class=\"form-control\" id=\"LeakageCurrentLimit\" name=\"LeakageCurrentLimit\" [(ngModel)]=\"model.LeakageCurrentLimit\" required #LeakageCurrentLimit=\"ngModel\" >\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"Motor Location\">Choose Motor Image</label><br/>\n        <input name=\"options\" ng-control=\"options\" type=\"radio\" [value]=\"fullImagePath1\"  [(ngModel)]=\"model.Image\" >\n        <img [src]=\"fullImagePath1\" width=\"7%\">\n        <input name=\"options\" ng-control=\"options\" type=\"radio\" [value]=\"fullImagePath2\" [(ngModel)]=\"model.Image\" >\n        <img [src]=\"fullImagePath2\" width=\"7%\">\n        <input name=\"options\" ng-control=\"options\" type=\"radio\" [value]=\"fullImagePath3\" [(ngModel)]=\"model.Image\" >\n        <img [src]=\"fullImagePath3\" width=\"7%\">\n        <input name=\"options\" ng-control=\"options\" type=\"radio\" [value]=\"fullImagePath4\" [(ngModel)]=\"model.Image\" >\n        <img [src]=\"fullImagePath4\" width=\"7%\">\n      </div>\n\n\n\n      <button type=\"submit\" class=\"btn btn-success\" (onclick)=\"onSubmit()\">Submit</button>\n \n    </form>\n  </div>\n\n<div [hidden]=\"!submitted\">\n  <h2>You submitted the following:</h2>\n  <div class=\"row\">\n    <div class=\"col-xs-3\">Station</div>\n    <div class=\"col-xs-9  pull-left\">{{ model.StationName }}</div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-3\">Motor Name</div>\n    <div class=\"col-xs-9 pull-left\">{{ model.Name }}</div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-3\">Serial Number</div>\n    <div class=\"col-xs-9 pull-left\">{{ model.SerialNumber }}</div>\n  </div>\n    <div class=\"row\">\n    <div class=\"col-xs-3\">Location</div>\n    <div class=\"col-xs-9 pull-left\">{{ model.Location }}</div>\n  </div>\n    <div class=\"row\">\n    <div class=\"col-xs-3\">Description</div>\n    <div class=\"col-xs-9 pull-left\">{{ model.Description }}</div>\n  </div>\n  <br>\n  <button class=\"btn btn-primary\" (click)=\"submitted=false\">Edit</button>\n</div>\n\n\n</div>"
+module.exports = "<div class=\"container\">\n  <div [hidden]=\"submitted\">\n  \n  \n  <h1>Motor Provisioning</h1>\n    <form style=\"width:97%; align-items: center\" #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\" style=\"width:80%\">\n\n       <div class=\"form-group\" >\n  <label for=\"station\">Select a Station</label>\n  <select class=\"form-control\"  id=\"stationName\"    name=\"StationName\" [(ngModel)]=\"model.StationName\" required>\n    <option *ngFor=\"let station of StationList\">{{JSON.parse(station.StationObject).StationName}}</option>\n   </select>\n       </div>\n        <div class=\"form-group\" >\n        <label for=\"name\">Motor Name</label>\n        <input type=\"text\" class=\"form-control\" id=\"name\" name=\"Name\" [(ngModel)]=\"model.Name\" required #Name=\"ngModel\" >\n      </div>\n\n      <div [hidden]=\"Name.valid || Name.pristine\" class=\"alert alert-danger\">\n          Motor Name is required\n      </div>\n      <div class=\"form-group\">\n        <label for=\"Motor Serial Number\">Motor Serial Number</label>\n        <input type=\"text\" class=\"form-control\" id=\"SerialNumber\" name=\"SerialNumber\" [(ngModel)]=\"model.SerialNumber\" required #SerialNumber=\"ngModel\">\n      </div>\n\n      <div [hidden]=\"SerialNumber.valid || SerialNumber.pristine\" class=\"alert alert-danger\">\n          Serial Number is required\n      </div>\n\n       <div class=\"form-group\">\n        <label for=\"Motor Location\">Motor Location</label>\n        <input type=\"text\" class=\"form-control\" id=\"location\" [(ngModel)]=\"model.Location\" name=\"Location\">\n      </div>\n       <div class=\"form-group\">\n        <label for=\"Motor Description\">Motor Description</label>\n        <input type=\"text\" class=\"form-control\" id=\"description\" [(ngModel)]=\"model.Description\" name=\"Description\">\n      </div>      \n       \n\n      <div class=\"form-group\">\n        <label for=\"frequency\">Motor Frequency</label>\n        <input type=\"text\" class=\"form-control\" id=\"frequency\" name=\"Frequency\" [(ngModel)]=\"model.Frequency\" required #Frequency=\"ngModel\" >\n      </div>\n\n       <div class=\"form-group\">\n        <label for=\"power\">Motor Power(HP)</label>\n        <input type=\"text\" class=\"form-control\" id=\"power\" name=\"Power\" [(ngModel)]=\"model.Power\" required #Power=\"ngModel\" >\n      </div>\n\n       <div class=\"form-group\">\n        <label for=\"RatedCurrent\">Motor Rated Current</label>\n        <input type=\"text\" class=\"form-control\" id=\"RatedCurrent\" name=\"RatedCurrent\" [(ngModel)]=\"model.RatedCurrent\" required #RatedCurrent=\"ngModel\" >\n      </div>\n\n       <div class=\"form-group\">\n        <label for=\"RatedVoltage\">Motor Rated Voltage</label>\n        <input type=\"text\" class=\"form-control\" id=\"RatedVoltage\" name=\"RatedVoltage\" [(ngModel)]=\"model.RatedVoltage\" required #RatedVoltage=\"ngModel\" >\n      </div>\n      <div class=\"form-group\">\n        <label for=\"LeakageCurrentLimit\">Motor Leakage Current Limit</label>\n        <input type=\"text\" class=\"form-control\" id=\"LeakageCurrentLimit\" name=\"LeakageCurrentLimit\" [(ngModel)]=\"model.LeakageCurrentLimit\" required #LeakageCurrentLimit=\"ngModel\" >\n      </div>\n\n      <div class=\"form-group\">\n        <label for=\"Motor Location\">Choose Motor Image</label><br/>\n        <input name=\"options\" ng-control=\"options\" type=\"radio\" [value]=\"fullImagePath1\"  [(ngModel)]=\"model.Image\" >\n        <img [src]=\"fullImagePath1\" width=\"7%\">\n        <input name=\"options\" ng-control=\"options\" type=\"radio\" [value]=\"fullImagePath2\" [(ngModel)]=\"model.Image\" >\n        <img [src]=\"fullImagePath2\" width=\"7%\">\n        <input name=\"options\" ng-control=\"options\" type=\"radio\" [value]=\"fullImagePath3\" [(ngModel)]=\"model.Image\" >\n        <img [src]=\"fullImagePath3\" width=\"7%\">\n        <input name=\"options\" ng-control=\"options\" type=\"radio\" [value]=\"fullImagePath4\" [(ngModel)]=\"model.Image\" >\n        <img [src]=\"fullImagePath4\" width=\"7%\">\n      </div>\n\n\n\n      <button type=\"submit\" class=\"btn btn-success\" (onclick)=\"onSubmit()\">Submit</button>\n \n    </form>\n  </div>\n\n<div [hidden]=\"!submitted\">\n  <h2>Motor Added Successfully with following detail:</h2>\n  <div class=\"row\">\n    <div class=\"col-xs-3\">Station</div>\n    <div class=\"col-xs-9  pull-left\">{{ model.StationName }}</div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-3\">Motor Name</div>\n    <div class=\"col-xs-9 pull-left\">{{ model.Name }}</div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-3\">Serial Number</div>\n    <div class=\"col-xs-9 pull-left\">{{ model.SerialNumber }}</div>\n  </div>\n    <div class=\"row\">\n    <div class=\"col-xs-3\">Location</div>\n    <div class=\"col-xs-9 pull-left\">{{ model.Location }}</div>\n  </div>\n    <div class=\"row\">\n    <div class=\"col-xs-3\">Description</div>\n    <div class=\"col-xs-9 pull-left\">{{ model.Description }}</div>\n  </div>\n  <br>\n  <button class=\"btn btn-primary\" (click)=\"submitted=false\">Edit</button>\n</div>\n\n\n</div>"
 
 /***/ }),
 
@@ -2874,7 +3022,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav  class=\"navbar navbar-inverse nav-bar-header \">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" (click)=\"toggleState()\" class=\"navbar-toggle collapsed pull-left\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button> <!-- #1 -->\n            <a routerLink=\"/plant\" class=\"navbar-brand\">Plant Performance Dashboard</a>\n            <a routerLink=\"/motor\" class=\"navbar-brand\">Motor Performance Dashboard</a>\n        </div>\n         <div class=\"collapse navbar-collapse\" [ngClass]=\"{ 'in': isIn }\"> \n            <ul class=\"nav navbar-nav\">\n                <li><a routerLink=\"/historical\">Motor Historical Data</a></li>\n                <li><a>Station Management</a></li>\n                <li><a routerLink=\"/MotorManagement\">Motor Management</a></li>\n                \n            </ul>\n        </div> <!-- #2 -->\n    </div>\n</nav>\n\n\n\n\n\n"
+module.exports = "<nav  class=\"navbar navbar-inverse nav-bar-header \">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" (click)=\"toggleState()\" class=\"navbar-toggle collapsed pull-left\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button> <!-- #1 -->\n            \n            <a routerLink=\"/motor\" class=\"navbar-brand\">Motor Remote Monitoring System</a>\n        </div>\n         <div class=\"collapse navbar-collapse\" [ngClass]=\"{ 'in': isIn }\"> \n            <ul class=\"nav navbar-nav\">\n                <!--<li><a routerLink=\"/historical\">Motor Historical Data</a></li>\n               <li><a>Station Management</a></li>-->\n               <li><a routerLink=\"/plant\">Plant Performance Dashboard</a> </li>\n               <li><a routerLink=\"/motor\">Motor Performance Dashboard</a></li>\n               <li><a routerLink=\"/MotorManagement\">Motor Management</a></li>\n                \n            </ul>\n        </div> <!-- #2 -->\n    </div>\n</nav>\n\n\n\n\n\n"
 
 /***/ }),
 
