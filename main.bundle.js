@@ -764,7 +764,6 @@ module.exports = "  <div class='overall-motor-status'>\n      <div class=\"panel
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__donut_base_chart_donut_base_chart_component__ = __webpack_require__("../../../../../src/app/Components/donut-base-chart/donut-base-chart.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Services_MotorService__ = __webpack_require__("../../../../../src/app/Services/MotorService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Configuration_MasterConfiguration__ = __webpack_require__("../../../../../src/app/Configuration/MasterConfiguration.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MotorStatusChartComponent; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -788,7 +787,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var MotorStatusChartComponent = (function (_super) {
     __extends(MotorStatusChartComponent, _super);
     function MotorStatusChartComponent(ss) {
@@ -798,7 +796,6 @@ var MotorStatusChartComponent = (function (_super) {
         return _this;
     }
     MotorStatusChartComponent.prototype.getMotorStatus = function () {
-        var _this = this;
         // hard coded 
         this.result = [
             ['StationHealth', 'NumOfStation'],
@@ -806,25 +803,31 @@ var MotorStatusChartComponent = (function (_super) {
             ['Amber', 1],
             ['Red', 2]
         ];
-        this.ss.getOverAllMotorStatus(__WEBPACK_IMPORTED_MODULE_3__Configuration_MasterConfiguration__["a" /* config */].PlantName, '').subscribe(function (result) {
-            _this.v = result;
-            setTimeout(_this.drawGraph(), 2000);
-        });
+        /*
+      this.ss.getOverAllMotorStatus(config.PlantName,'').subscribe(result =>{
+          this.v=result;
+          setTimeout( this.drawGraph(),2000);
+         });
+        */
     };
     MotorStatusChartComponent.prototype.drawGraph = function () {
-        var stList = this.v.json()['value'];
-        if (__WEBPACK_IMPORTED_MODULE_3__Configuration_MasterConfiguration__["a" /* config */].PlantName != '') {
-            stList = stList.filter(function (x) { return x.PlantName == __WEBPACK_IMPORTED_MODULE_3__Configuration_MasterConfiguration__["a" /* config */].PlantName; });
-        }
-        var Green = stList.filter(function (x) { return x.Status == 'Green'; }).length;
-        var Red = stList.filter(function (x) { return x.Status == 'Red'; }).length;
-        var Amber = stList.filter(function (x) { return x.Status == 'Amber'; }).length;
-        this.result = [
-            ['StationHealth', 'NumOfStation'],
-            ['Green', Green],
-            ['Amber', Amber],
-            ['Red', Red]
-        ];
+        /* let stList = this.v.json()['value'];
+         if(config.PlantName!='')
+          {
+           stList=stList.filter(x=>x.PlantName==config.PlantName);
+          }
+         
+           let Green =stList.filter(x=>x.Status=='Green').length;
+           let Red =stList.filter(x=>x.Status=='Red').length;
+           let Amber =stList.filter(x=>x.Status=='Amber').length;
+           
+             this.result = [
+             ['StationHealth', 'NumOfStation'],
+             ['Green',     Green],
+             ['Amber',     Amber],
+             ['Red',  Red]
+           ]
+          */
         console.log("DrawGraph Evolution...");
         this.data = this.createDataTable(this.result);
         this.options = {
@@ -1084,7 +1087,6 @@ module.exports = "\n<div class=\"panel-heading text-center\">Overall Station Sta
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_chart_base_chart_component__ = __webpack_require__("../../../../../src/app/Components/base-chart/base-chart.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Services_StationService__ = __webpack_require__("../../../../../src/app/Services/StationService.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Configuration_MasterConfiguration__ = __webpack_require__("../../../../../src/app/Configuration/MasterConfiguration.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PiChartComponent; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1108,7 +1110,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var PiChartComponent = (function (_super) {
     __extends(PiChartComponent, _super);
     function PiChartComponent(ss) {
@@ -1118,18 +1119,18 @@ var PiChartComponent = (function (_super) {
         return _this;
     }
     PiChartComponent.prototype.getStationStatus = function () {
-        var _this = this;
         // hard coded
         this.v = [
             ['StationHealth', 'NumOfStation'],
-            ['Green', 490],
-            ['Amber', 200],
-            ['Red', 20]
+            ['Green', 3],
+            ['Amber', 1],
+            ['Red', 1]
         ];
-        this.ss.getStationStatus(__WEBPACK_IMPORTED_MODULE_3__Configuration_MasterConfiguration__["a" /* config */].PlantName).subscribe(function (result) {
-            _this.v = result;
-            setTimeout(_this.drawGraph(), 2000);
-        });
+        /*
+    this.ss.getStationStatus(config.PlantName).subscribe(result =>{ this.v=result;
+      setTimeout( this.drawGraph(),2000);
+     }) ;
+     */
     };
     PiChartComponent.prototype.drawGraph = function () {
         console.log("DrawGraph ...");
@@ -2562,32 +2563,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-//import * as sendgrid from 'sendgrid';
-/*declare var sendEmail: any;
-new sendEmail();
-var helper = sendgrid.mail;
-var key='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';
-
-var from_email = new helper.Email("tiwarig@hcl.com");
-var to_email = new helper.Email("tiwarig@hcl.com");
-var subject = "Sending with SendGrid is Fun";
-var content = new helper.Content("text/plain", "and easy to do anywhere, even with Node.js");
-var mail = new helper.Mail(from_email, subject, to_email, content);
-
-var sg = sendgrid(key);
-var request = sg.emptyRequest({
-  method: 'POST',
-  path: '/v3/mail/send',
-  body: mail.toJSON()
-});
-
-sg.API(request, function(error, response) {
-  console.log(response.statusCode);
-  console.log(response.body);
-  console.log(response.headers);
-})
-
-*/
 var EvolutionComponent = (function (_super) {
     __extends(EvolutionComponent, _super);
     function EvolutionComponent(toastyService, toastyConfig, motorService) {
@@ -2601,15 +2576,10 @@ var EvolutionComponent = (function (_super) {
         _this.motorService.MotorDataSubject.subscribe(function (data) {
             _this.motorData = data;
             _this.MotorName = JSON.parse(_this.motorData[0].MotorObject).Name;
-            console.log('Evolution Component' + JSON.parse(_this.motorData[0].MotorObject).Name);
             try {
                 setTimeout(function () { return _this.drawGraph(); }, 1000);
-                //this.drawGraph();
             }
-            catch (e) {
-                //waits(1000);
-                //this.drawGraph();
-            }
+            catch (e) { }
         });
         _this.toastyService.default({
             title: "Toast It!",
@@ -2618,7 +2588,6 @@ var EvolutionComponent = (function (_super) {
             timeout: 5000,
             theme: "default"
         });
-        // Or create the instance of ToastOptions
         var toastOptions = {
             title: "My title",
             msg: "The message",
@@ -2626,40 +2595,20 @@ var EvolutionComponent = (function (_super) {
             timeout: 5000,
             theme: 'default',
             onAdd: function (toast) {
-                console.log('Toast ' + toast.id + ' has been added!');
             },
             onRemove: function (toast) {
-                console.log('Toast ' + toast.id + ' has been removed!');
             }
         };
         _this.toastyService.error(toastOptions);
         _this.currentTime = _this.GetTime(new Date());
-        _this.v = [
-            ['Time', 'Load', 'Leakage Current'],
-            [_this.currentTime, 70, 20]
-        ];
+        _this.v = [['Time', 'Load', 'Leakage Current'], [_this.currentTime, 70, 20]];
         var ref = _this;
-        setInterval(function () {
-            //this.ref=this;
+        _this.stopTimer = setInterval(function () {
             ref.getTemp(50 + Math.round(20 * Math.random()), 15 + Math.round(10 * Math.random()));
-        }
-        /*console.log('Temp'+ref1.data);
-        ref1.data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
-        ref1.chart.draw(ref1.data, ref1.options);
-      }*/
-        , 1500);
+        }, 1500);
         setInterval(function () {
-            //this.ref=this;
             ref.onClick('Amber', 'Motor Voltage is in warning state');
-        }
-        /*console.log('Temp'+ref1.data);
-        ref1.data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
-        ref1.chart.draw(ref1.data, ref1.options);
-      }*/
-        , 15000);
-        console.log("Log for Wss: " + _this.url);
-        //   this.socket = io(this.url);
-        //   console.log("connected...");
+        }, 15000);
         var ws = new WebSocket(_this.url);
         ws.onopen = function () {
             console.log('Successfully connect WebSocket' + this.url);
@@ -2671,9 +2620,7 @@ var EvolutionComponent = (function (_super) {
             console.log('Message received....');
             console.log('receive message' + message.data);
             console.log('Device Name' + JSON.parse(message.data).DeviceName);
-            //if(ref.MotorName==JSON.parse(message.data).DeviceName){
             ref.getTemp(JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Velocity'; })[0].Value, JSON.parse(message.data).DataPoints.filter(function (x) { return x.Parameter == 'Load'; })[0].Value);
-            //Showing the alert for motor
             console.log(JSON.parse(message.data).MotorStatus);
             if (JSON.parse(message.data).MotorStatus == "Red") {
                 ref.onClick('Red', 'Motor Velocity is in critical state');
@@ -2681,19 +2628,13 @@ var EvolutionComponent = (function (_super) {
             if (JSON.parse(message.data).MotorStatus == "Amber") {
                 ref.onClick('Amber', 'Motor Voltage is in warning state');
             }
-            //}
         };
         return _this;
     }
-    EvolutionComponent.prototype.notify = function (item) {
-    };
     EvolutionComponent.prototype.drawGraph = function () {
         console.log("DrawGraph Evolution...");
         var currentTime = this.GetTime(new Date());
-        var v = [
-            ['Time', 'Velocity', 'Load'],
-            [currentTime, 0, 21]
-        ];
+        var v = [['Time', 'Velocity', 'Load'], [currentTime, 0, 21]];
         this.data = this.createDataTable(v);
         this.options = {
             title: 'Load Vs Leakage Current',
@@ -2710,11 +2651,11 @@ var EvolutionComponent = (function (_super) {
         this.chart.draw(this.data, this.options);
         var ref1 = this;
     };
+    EvolutionComponent.prototype.ngOnDestroy = function () {
+        clearInterval(this.stopTimer);
+    };
     EvolutionComponent.prototype.getTemp = function (temperature, humidity) {
-        //var temperature = (Math.random() * (35 - 30) + 30);
-        //var humidity = (Math.random() * (40 - 15) + 15);
         var timestamp = this.GetTime(new Date());
-        //this.data.addRow([timestamp, temperature, humidity]);
         this.v.push([timestamp, temperature, humidity]);
         this.data = this.createDataTable(this.v);
         this.chart = this.createBarChart(document.getElementById('monitor_chart'));
@@ -2733,8 +2674,6 @@ var EvolutionComponent = (function (_super) {
         var msg = 'Critical Alert - ' + content;
         if (arg == 'Amber')
             msg = 'Warning Alert - ' + content;
-        //this.drawGraph();
-        // Or create the instance of ToastOptions
         var toastOptions = {
             title: "Motor Alert",
             msg: msg,
