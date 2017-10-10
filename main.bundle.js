@@ -2291,7 +2291,7 @@ var GaugeChartBaseComponent_1;
 /***/ "../../../../../src/app/charts/gauge-chart/gauge-chart.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel panel-default\"  >\n    <div class=\"panel-heading\" style=\"font-weight:bold; text-align: left \">{{MotorName}} - Key Process Indicator(KPI) </div>\n    <div id=\"gauge_chart\" class=\"panel-body\" style=\"width:180 px; height: 180px\" ></div>\n</div>\n"
+module.exports = "<div class=\"panel panel-default\"  >\n    <div class=\"panel-heading\" style=\"font-weight:bold; text-align: left \">{{MotorName}} - Key Process Indicator(KPI) </div>\n    <div class=\"panel-body\">\n        <div class=\"row\">\n            <div class=\"col-md-3\" >\n                <div id=\"gauge_chart\" class=\"panel-body\" style=\"width:180 px; height: 180px\" ></div>\n            </div>\n            <div class=\"col-md-3\" >\n                <div id=\"gauge_chart_velocity\" class=\"panel-body\" style=\"width:180 px; height: 180px\" ></div>\n            </div>\n            <div class=\"col-md-3\" >\n                <div id=\"gauge_chart_load\" class=\"panel-body\" style=\"width:180 px; height: 180px\" ></div>\n            </div> \n            <div class=\"col-md-3\" >\n                <div id=\"gauge_chart_current\" class=\"panel-body\" style=\"width:180 px; height: 180px\" ></div>\n            </div>        \n        </div>\n\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -2333,18 +2333,60 @@ var GaugeChartComponent = (function (_super) {
         var _this = _super.call(this) || this;
         _this.motorService = motorService;
         _this.url = 'wss://hclmotorwebapplication.azurewebsites.net';
-        _this.options = {
-            redFrom: 90, redTo: 100,
-            yellowFrom: 75, yellowTo: 90,
-            minorTicks: 5
+        _this.optionsVoltage = {
+            redFrom: 240, redTo: 250,
+            yellowFrom: 230, yellowTo: 240,
+            minorTicks: 5,
+            min: 0,
+            max: 250
         };
-        _this.dataArray = [
+        _this.optionsFrequency = {
+            redFrom: 60, redTo: 70,
+            yellowFrom: 50, yellowTo: 60,
+            minorTicks: 5,
+            min: 0,
+            max: 70
+        };
+        _this.optionsCurrent = {
+            redFrom: 8, redTo: 10,
+            yellowFrom: 7, yellowTo: 8,
+            minorTicks: .5,
+            min: 0,
+            max: 10
+        };
+        _this.optionsVelocity = {
+            redFrom: 3, redTo: 4,
+            yellowFrom: 2, yellowTo: 3,
+            minorTicks: .1,
+            min: 0,
+            max: 4
+        };
+        _this.optionsLoadNoise = {
+            redFrom: 80, redTo: 100,
+            yellowFrom: 70, yellowTo: 100,
+            minorTicks: 5,
+            min: 0,
+            max: 100
+        };
+        _this.dataArrayVoltage = [
             ['Label', 'Voltage'],
-            ['Voltage', 80],
-            ['Current', 60],
-            ['Frequency', 20],
-            ['Poweer', 40],
-            ['Velocity', 70]
+            ['Voltage', 200]
+        ];
+        _this.dataArrayVelocity = [
+            ['Label', 'Velocity'],
+            ['Voltage', 1]
+        ];
+        _this.dataArrayCurrent = [
+            ['Label', 'Current'],
+            ['Voltage', 2]
+        ];
+        _this.dataArrayLoad = [
+            ['Label', 'Load Noise'],
+            ['Load', 50]
+        ];
+        _this.dataArrayFrequency = [
+            ['Label', 'Frequency'],
+            ['Frequency', 50]
         ];
         _this.motorService.MotorDataSubject.subscribe(function (data) {
             _this.motorData = data;
@@ -2381,47 +2423,64 @@ var GaugeChartComponent = (function (_super) {
     GaugeChartComponent.prototype.drawGraph = function () {
         console.log("Gauge Graph...");
         var currentTime = this.GetTime(new Date());
-        /*var v=[
-                ['Time','Voltage','Current','Frequency','Power','Velocity'],
-                [currentTime,80,55,68,20,50]
-              ];
-              */
         var v = [
             ['Label', 'Voltage'],
-            ['Voltage', 80],
-            ['Current', 60],
-            ['Frequency', 20],
-            ['Poweer', 40],
-            ['Velocity', 70]
+            ['Voltage', 200]
         ];
-        this.data = this.createDataTable(v);
+        this.dataVoltage = this.createDataTable(v);
+        var frequency = [
+            ['Label', 'Frequency'],
+            ['Frequency', 50]
+        ];
+        this.dataFrequency = this.createDataTable(frequency);
+        var load = [
+            ['Label', 'NoiseLoad'],
+            ['Load', 50]
+        ];
+        this.dataFrequency = this.createDataTable(frequency);
+        var velocity = [
+            ['Label', 'Velocity'],
+            ['Velocity', 50]
+        ];
+        this.dataFrequency = this.createDataTable(frequency);
+        var current = [
+            ['Label', 'Current'],
+            ['Current', 5]
+        ];
+        this.dataFrequency = this.createDataTable(frequency);
+        this.dataLoad = this.createDataTable(load);
+        this.dataCurrent = this.createDataTable(current);
+        this.dataVelocity = this.createDataTable(velocity);
         this.chart = this.createGaugeChart(document.getElementById('gauge_chart'));
-        this.chart.draw(this.data, this.options);
+        this.chart.draw(this.dataVoltage, this.optionsVoltage);
+        //this.chart_frequency = this.createGaugeChart(document.getElementById('gauge_chart_frequency'));
+        //this.chart_frequency.draw(this.dataFrequency, this.optionsFrequency);
+        this.chart_velocity = this.createGaugeChart(document.getElementById('gauge_chart_velocity'));
+        this.chart_velocity.draw(this.dataVelocity, this.optionsVelocity);
+        this.chart_current = this.createGaugeChart(document.getElementById('gauge_chart_current'));
+        this.chart_current.draw(this.dataCurrent, this.optionsCurrent);
+        this.chart_load = this.createGaugeChart(document.getElementById('gauge_chart_load'));
+        this.chart_load.draw(this.dataLoad, this.optionsLoadNoise);
         var ref2 = this;
         setInterval(function () {
             //this.ref=this;
-            ref2.getTemp(40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()));
-        }
-        /*console.log('Temp'+ref1.data);
-        ref1.data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
-        ref1.chart.draw(ref1.data, ref1.options);
-      }*/
-        , 1000);
+            ref2.getTemp(5 + Math.round(2 * Math.random()), 200 + Math.round(50 * Math.random()), 60 + Math.round(40 * Math.random()), 40 + Math.round(60 * Math.random()), 1 + Math.round(1 * Math.random()));
+        }, 3000);
     };
     GaugeChartComponent.prototype.getTemp = function (current, voltage, power, frequency, velocity) {
         console.log('Current-->' + current + 'Voltage-->' + voltage + 'Frequency-->' + frequency);
         var timestamp = this.GetTime(new Date());
-        console.log('Websocket data' + this.data);
-        this.data.setValue(0, 1, voltage);
-        this.data.setValue(1, 1, current);
-        this.data.setValue(2, 1, frequency);
-        this.data.setValue(3, 1, power);
-        this.data.setValue(4, 1, velocity);
-        this.chart.draw(this.data, this.options);
-        //this.dataArray.push( ['Current', current],['Voltage',voltage],['Power',power],['Frequency',frequency],['Velocity',velocity]);
-        //this.data= this.createDataTable(this.dataArray)
-        //this.chart = this.createGaugeChart(document.getElementById('gauge_chart'));
-        //this.chart.draw(this.data, this.options);   
+        //console.log('Websocket data'+this.data);
+        this.dataVoltage.setValue(0, 1, voltage);
+        this.chart.draw(this.dataVoltage, this.optionsVoltage);
+        //this.dataFrequency.setValue(0, 1, frequency);
+        //this.chart_frequency.draw(this.dataFrequency, this.optionsFrequency);
+        this.dataCurrent.setValue(0, 1, current);
+        this.chart_current.draw(this.dataCurrent, this.optionsCurrent);
+        this.dataVelocity.setValue(0, 1, velocity);
+        this.chart_velocity.draw(this.dataVelocity, this.optionsVelocity);
+        this.dataLoad.setValue(0, 1, power);
+        this.chart_load.draw(this.dataLoad, this.optionsLoadNoise);
     };
     GaugeChartComponent.prototype.GetTime = function (date) {
         var day = date.getDate();
@@ -2555,19 +2614,19 @@ var EvolutionComponent = (function (_super) {
         _this.toastyService.error(toastOptions);
         _this.currentTime = _this.GetTime(new Date());
         _this.v = [
-            ['Time', 'Velocity', 'Load'],
-            [_this.currentTime, 0, 21]
+            ['Time', 'Load', 'Leakage Current'],
+            [_this.currentTime, 70, 20]
         ];
         var ref = _this;
         setInterval(function () {
             //this.ref=this;
-            ref.getTemp(40 + Math.round(60 * Math.random()), 40 + Math.round(60 * Math.random()));
+            ref.getTemp(50 + Math.round(20 * Math.random()), 15 + Math.round(10 * Math.random()));
         }
         /*console.log('Temp'+ref1.data);
         ref1.data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
         ref1.chart.draw(ref1.data, ref1.options);
       }*/
-        , 1000);
+        , 1500);
         setInterval(function () {
             //this.ref=this;
             ref.onClick('Amber', 'Motor Voltage is in warning state');
@@ -2576,7 +2635,7 @@ var EvolutionComponent = (function (_super) {
         ref1.data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
         ref1.chart.draw(ref1.data, ref1.options);
       }*/
-        , 10000);
+        , 15000);
         console.log("Log for Wss: " + _this.url);
         //   this.socket = io(this.url);
         //   console.log("connected...");
@@ -2616,7 +2675,7 @@ var EvolutionComponent = (function (_super) {
         ];
         this.data = this.createDataTable(v);
         this.options = {
-            title: 'Velocity Vs Load',
+            title: 'Load Vs Leakage Current',
             chartArea: { width: "1000 px", height: "1000 px" },
             hAxis: {
                 title: 'Time',
