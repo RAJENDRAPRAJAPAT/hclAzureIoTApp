@@ -1971,7 +1971,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n \n\n \n \n <div class=\"container\"> \n  \n     <div id='app-header' class=\"panel panel-primary \">\n         \n        <app-navbar></app-navbar>            \n        \n        <div class=\"panel-body body-container\"  >     \n            \n            \n            <router-outlet></router-outlet>\n        </div>\n\n        <div id='footer' class=\"panel-footer page-footer\">\n            <div >      </div>    \n        \n        </div>  \n    </div>\n  \n   \n</div>\n\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n \n\n \n \n <div class=\"container\"> \n  \n     <div id='app-header' class=\"panel panel-primary \">\n         \n        <app-navbar></app-navbar>            \n        \n        <div class=\"panel-body body-container\"  >     \n            \n            \n            <router-outlet></router-outlet>\n        </div>\n\n        <div id='footer' class=\"panel-footer page-footer\">\n            <div >      </div>    \n        <a href=\"\" style='color:white;font-size:10px'>Copyright © 2017 HCL Technologies. All rights reserved.</a>\n        </div>  \n    </div>\n  \n   \n</div>\n\n\n"
 
 /***/ }),
 
