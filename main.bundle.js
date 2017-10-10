@@ -265,11 +265,12 @@ var BaseChartComponent = BaseChartComponent_1 = (function () {
         return google;
     };
     BaseChartComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (!BaseChartComponent_1.googleLoaded) {
             BaseChartComponent_1.googleLoaded = true;
             google.charts.load('current', { packages: ['corechart', 'bar'] });
         }
-        // google.charts.setOnLoadCallback(() => this.drawGraph());
+        google.charts.setOnLoadCallback(function () { return _this.drawGraph(); });
     };
     BaseChartComponent.prototype.drawGraph = function () {
         console.log("DrawGraph base class!!!! ");
@@ -383,11 +384,12 @@ var DonutBaseChartComponent = DonutBaseChartComponent_1 = (function () {
         return google;
     };
     DonutBaseChartComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (!DonutBaseChartComponent_1.googleLoaded) {
             DonutBaseChartComponent_1.googleLoaded = true;
             google.charts.load('current', { packages: ['corechart', 'bar'] });
         }
-        // google.charts.setOnLoadCallback(() => this.drawGraph());
+        google.charts.setOnLoadCallback(function () { return _this.drawGraph(); });
     };
     DonutBaseChartComponent.prototype.drawGraph = function () {
         console.log("DrawGraph base class!!!! ");
@@ -797,6 +799,13 @@ var MotorStatusChartComponent = (function (_super) {
     }
     MotorStatusChartComponent.prototype.getMotorStatus = function () {
         var _this = this;
+        // hard coded 
+        this.result = [
+            ['StationHealth', 'NumOfStation'],
+            ['Green', 5],
+            ['Amber', 1],
+            ['Red', 2]
+        ];
         this.ss.getOverAllMotorStatus(__WEBPACK_IMPORTED_MODULE_3__Configuration_MasterConfiguration__["a" /* config */].PlantName, '').subscribe(function (result) {
             _this.v = result;
             setTimeout(_this.drawGraph(), 2000);
@@ -810,14 +819,14 @@ var MotorStatusChartComponent = (function (_super) {
         var Green = stList.filter(function (x) { return x.Status == 'Green'; }).length;
         var Red = stList.filter(function (x) { return x.Status == 'Red'; }).length;
         var Amber = stList.filter(function (x) { return x.Status == 'Amber'; }).length;
-        var result = [
+        this.result = [
             ['StationHealth', 'NumOfStation'],
             ['Green', Green],
             ['Amber', Amber],
             ['Red', Red]
         ];
         console.log("DrawGraph Evolution...");
-        this.data = this.createDataTable(result);
+        this.data = this.createDataTable(this.result);
         this.options = {
             /*title: 'Evolution, 2014', */
             chartArea: { left: 0, width: "90%", height: "500" },
@@ -991,7 +1000,7 @@ var _a;
 /***/ "../../../../../src/app/Components/notifications/notifications.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class='plant-notification'>\n<div class=\"panel-heading text-center \">Plant Notification  </div>\n<div class=\"panel-body\">\n     \n      <ul>\n          <li class=\"{{notification['Status']}}-alert\"  *ngFor=\" let notification of notificationlist\" >\n              <span class=\"glyphicon glyphicon-alert\"></span>  \n              <a id =\"{{notification['RowKey']}}\" href=\"#\"  (click)=\"myFunction(notification['RowKey'],$event)\" >\n                  {{notification['Subject']}}</a>\n          </li>\n                                   \n      </ul>\n</div>\n\n\n\n\n\n<div class=\" notification-popup\" id=\"popdiv\"  > \n        \n        <div class=\"popuptext\" id=\"notPop\" >    \n             \n             <table   class='motor-popup header-table' *ngIf=\"filterNotlist\"  >\n                \n                <tr>\n\t\t\t\t<td class='' > {{JSON.parse(filterNotlist[0]['Content']).StationName }}  </td>\n                   <td class='' > {{JSON.parse(filterNotlist[0]['Content']).DeviceName }}  </td>\n\n                   \n                   \n                </tr>\n             </table>\n             <table cellpadding=\"20\" class='motor-popup' *ngIf=\"filterNotlist\">\n                <tr>\n                        <th class='' >Parameter  </th>\n                        <th class='' > Value </th>\n                        <th>Status </th>\n                         \n                     </tr>\n                <tr *ngFor=\"let datapoint of JSON.parse(filterNotlist[0]['Content']).DataPoints \" >\n                            <td>\n                                        {{ datapoint.Parameter }}\n                            </td>\n                            <td>\n                                    {{ datapoint.Value +\"  \" +  datapoint.UOM }}\n                            </td>\n                            <td>\n                                  <span class=\"circle-small {{ datapoint.Status }}  \" style='margin-left:10px;'></span>  \n                            </td>\n                            \n                </tr>\n             \n                \n             </table>\n           \n        </div>\n      </div>\n\n\n\n\n\n</div>\n"
+module.exports = "\n<div class='plant-notification'>\n<div class=\"panel-heading text-center \">Plant Notification  </div>\n<div class=\"panel-body\">\n     \n      <ul>\n          <li class=\"{{notification['Status']}}-alert\"  *ngFor=\" let notification of notificationlist\" >\n              <span class=\"glyphicon glyphicon-alert\"></span>  \n              <a id =\"{{notification['RowKey']}}\"   (click)=\"myFunction(notification['RowKey'],$event)\" >\n                  {{notification['Subject']}}</a>\n          </li>\n                                   \n      </ul>\n</div>\n\n\n\n\n\n<div class=\" notification-popup\" id=\"popdiv\"  > \n        \n        <div class=\"popuptext\" id=\"notPop\" >    \n             \n             <table   class='motor-popup header-table' *ngIf=\"filterNotlist\"  >\n                \n                <tr>\n\t\t\t\t<td class='' > {{JSON.parse(filterNotlist[0]['Content']).StationName }}  </td>\n                   <td class='' > {{JSON.parse(filterNotlist[0]['Content']).DeviceName }}  </td>\n\n                   \n                   \n                </tr>\n             </table>\n             <table cellpadding=\"20\" class='motor-popup' *ngIf=\"filterNotlist\">\n                <tr>\n                        <th class='' >Parameter  </th>\n                        <th class='' > Value </th>\n                        <th>Status </th>\n                         \n                     </tr>\n                <tr *ngFor=\"let datapoint of JSON.parse(filterNotlist[0]['Content']).DataPoints \" >\n                            <td>\n                                        {{ datapoint.Parameter }}\n                            </td>\n                            <td>\n                                    {{ datapoint.Value +\"  \" +  datapoint.UOM }}\n                            </td>\n                            <td>\n                                  <span class=\"circle-small {{ datapoint.Status }}  \" style='margin-left:10px;'></span>  \n                            </td>\n                            \n                </tr>\n             \n                \n             </table>\n           \n        </div>\n      </div>\n\n\n\n\n\n</div>\n"
 
 /***/ }),
 
@@ -1110,6 +1119,13 @@ var PiChartComponent = (function (_super) {
     }
     PiChartComponent.prototype.getStationStatus = function () {
         var _this = this;
+        // hard coded
+        this.v = [
+            ['StationHealth', 'NumOfStation'],
+            ['Green', 490],
+            ['Amber', 200],
+            ['Red', 20]
+        ];
         this.ss.getStationStatus(__WEBPACK_IMPORTED_MODULE_3__Configuration_MasterConfiguration__["a" /* config */].PlantName).subscribe(function (result) {
             _this.v = result;
             setTimeout(_this.drawGraph(), 2000);
@@ -1602,7 +1618,12 @@ var NotificationService = NotificationService_1 = (function () {
     };
     NotificationService.prototype.GetJsonData = function (xmldata, plantName, stationName) {
         var jsonobject = xmldata.json()['value'];
-        return jsonobject;
+        var filterObject = [];
+        for (var item in jsonobject) {
+            if (parseInt(item) < 10)
+                filterObject.push(jsonobject[item]);
+        }
+        return filterObject;
     };
     /*
      private handleError(error: any): Promise<any> {
